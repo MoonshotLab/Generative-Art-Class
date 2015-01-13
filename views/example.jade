@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .grid
+    .item.six(style="background-image:url(/processing-experiments/#{directory}/#{image})")
+    .item.one
+    .item.five
+      h1= directory
+      a.button(href="#") Download Zip

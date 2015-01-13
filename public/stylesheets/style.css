@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: Helvetica;
+  color: rgba(0,0,0,.8);
 }
 
 .grid{
@@ -15,7 +17,35 @@ body {
   background-size: cover;
 }
 
+.grid .item.one{
+  width: 8.33333%;
+  padding-bottom: 8.33333%;
+}
+
 .grid .item.four{
   width: 25%;
   padding-bottom: 25%;
+}
+
+.grid .item.five{
+  width: 41.66667%;
+  padding-bottom: 41.66667%;
+}
+
+.grid .item.six{
+  width: 50%;
+  padding-bottom: 50%;
+}
+
+a.button{
+  padding: 7px 10px;
+  color: rgba(0,0,0,.8);
+  background-color: rgba(0,0,0,.1);
+  border: 1px solid rgba(0,0,0,.35);
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+a.button:hover{
+  background-color: rgba(0,0,0,.05);
 }

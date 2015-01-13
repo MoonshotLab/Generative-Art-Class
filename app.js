@@ -16,4 +16,11 @@ app.get('/', function(req, res){
   res.render('index', { examples : exampleContent });
 });
 
+app.get('/example/:dir', function(req, res){
+  res.render('example', {
+    directory : 'M_1_4_01',
+    image : 'M_1_4_01.png'
+  });
+});
+
 module.exports = app;
