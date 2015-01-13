@@ -7,20 +7,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
-var exampleContent = [];
-examples.getImages().then(function(content){
-  exampleContent = content;
-});
-
 app.get('/', function(req, res){
-  res.render('index', { examples : exampleContent });
+  res.render('index', { examples : examples.getReferences() });
 });
 
-app.get('/example/:dir', function(req, res){
-  res.render('example', {
-    directory : 'M_1_4_01',
-    image : 'M_1_4_01.png'
-  });
+app.get('/example/:directory', function(req, res){
+  var ref = examples.getReference(req.params.directory);
+  res.render('example', ref);
 });
 
 module.exports = app;
