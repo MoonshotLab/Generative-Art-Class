@@ -1,8 +1,21 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: #00B7FF;
+.grid{
+  width: 100%;
+}
+
+.grid .item{
+  float: left;
+  height: 0;
+  display: inline-block;
+  background-position: center center;
+  background-size: cover;
+}
+
+.grid .item.four{
+  width: 25%;
+  padding-bottom: 25%;
 }

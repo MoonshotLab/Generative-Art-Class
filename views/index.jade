@@ -1,5 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .grid
+    each example in examples
+      a(href="/example/#{example.directory}")
+        .item.four(style="background-image:url(processing-experiments/#{example.directory}/#{example.image})")
