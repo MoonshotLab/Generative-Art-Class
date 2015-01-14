@@ -2,8 +2,10 @@ extends layout
 
 block content
   .grid
-    .item.six(style="background-image:url(/processing-experiments/#{directory}/#{image})")
+    .item.four(style="background-image:url(/processing-experiments/#{directory}/#{image})")
     .item.one
-    .item.five
+    .item.seven
       h1= directory
       a.button(href="/zip/#{directory}") Download Zip
+      pre
+        code(class="processing")!= codez

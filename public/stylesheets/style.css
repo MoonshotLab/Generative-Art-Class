@@ -22,9 +22,14 @@ body {
   padding-bottom: 8.33333%;
 }
 
-.grid .item.four{
+.grid .item.three{
   width: 25%;
   padding-bottom: 25%;
+}
+
+.grid .item.four{
+  width: 33.3333%;
+  padding-bottom: 33.3333%;
 }
 
 .grid .item.five{
@@ -35,6 +40,16 @@ body {
 .grid .item.six{
   width: 50%;
   padding-bottom: 50%;
+}
+
+.grid .item.seven{
+  width: 58.33333%;
+  padding-bottom: 58.33333%;
+}
+
+.grid .item.eight{
+  width: 66.6666%;
+  padding-bottom: 66.6666%;
 }
 
 a.button{

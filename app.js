@@ -14,8 +14,12 @@ app.get('/', function(req, res){
 
 
 app.get('/example/:directory', function(req, res){
-  var ref = examples.getReference(req.params.directory);
-  res.render('example', ref);
+  var example = examples.getReference(req.params.directory);
+  examples.getCode(req.params.directory, function(code){
+    example.codez = code;
+    res.render('example', example);
+  });
+
 });
 
 
