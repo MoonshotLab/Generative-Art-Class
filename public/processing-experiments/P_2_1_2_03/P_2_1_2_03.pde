@@ -1,5 +1,5 @@
 // P_2_1_2_03.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,15 +18,15 @@
 
 /**
  * changing size of circles in a rad grid depending the mouseposition
- * 	 
+ *
  * MOUSE
  * position x/y        : module size and offset z
- * 
+ *
  * KEYS
  * s                   : save png
  * p                   : save pdf
  */
- 
+
 import processing.opengl.*;
 import processing.pdf.*;
 import java.util.Calendar;
@@ -37,7 +37,7 @@ float tileCount = 20;
 color moduleColor = color(0);
 int moduleAlpha = 180;
 int actRandomSeed = 0;
-int max_distance = 500; 
+int max_distance = 500;
 
 void setup(){
   size(600, 600, OPENGL);
@@ -55,15 +55,15 @@ void draw() {
   stroke(moduleColor, moduleAlpha);
   strokeWeight(3);
 
-  for (int gridY=0; gridY<width; gridY+=25) {
-    for (int gridX=0; gridX<height; gridX+=25) {
+  for (int gridY=0; gridY < width; gridY+=25) {
+    for (int gridX=0; gridX < height; gridX+=25) {
 
       float diameter = dist(mouseX, mouseY, gridX, gridY);
       diameter = diameter/max_distance * 40;
       pushMatrix();
       translate(gridX, gridY, diameter*5);
       rect(0, 0, diameter, diameter);    //// also nice: ellipse(...)
-      popMatrix(); 
+      popMatrix();
     }
   }
 
@@ -87,8 +87,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-

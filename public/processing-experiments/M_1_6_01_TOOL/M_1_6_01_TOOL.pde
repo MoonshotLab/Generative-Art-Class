@@ -1,6 +1,6 @@
 // M_1_6_01_TOOL.pde
 // Agent.pde, GUI.pde, Ribbon3d.pde, TileSaver.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -20,17 +20,17 @@
 /**
  * noise values (noise 3d) are used to animate the movement of agents.
  * each agent is visualizing its position history with a ribbon (line style).
- * 
+ *
  * MOUSE
  * position x/y + right drag  : camera controls
- * 
+ *
  * KEYS
  * m                          : toogle menu open/close
  * f                          : toogle freeze noise animation
  * space                      : new noise seed
  * arrow up                   : zoom in
  * arrow down                 : zoom out
- * p                          : high resolution export (please update to processing 1.0.8 or 
+ * p                          : high resolution export (please update to processing 1.0.8 or
  *                              later. otherwise this will not work properly)
  * s                          : save png
  */
@@ -43,7 +43,7 @@ import java.util.Calendar;
 // ------ agents ------
 int agentsCount = 600;
 Agent[] agents = new Agent[1000];
-float noiseScale = 150, noiseStrength = 20; 
+float noiseScale = 150, noiseStrength = 20;
 float agentAlpha = 76;
 color agentColor;
 
@@ -57,7 +57,7 @@ Range[] ranges;
 
 // ------ mouse interaction ------
 int offsetX = 0, offsetY = 0, clickX = 0, clickY = 0, zoom = -100;
-float rotationX = 0, rotationY = 0, targetRotationX = 0, targetRotationY = 0, clickRotationX, clickRotationY; 
+float rotationX = 0, rotationY = 0, targetRotationX = 0, targetRotationY = 0, clickRotationX, clickRotationY;
 int spaceSizeX = 200, spaceSizeY = 300, spaceSizeZ = 200;
 
 boolean freeze = false;
@@ -70,9 +70,9 @@ TileSaver tiler;
 
 void setup() {
   size(800, 800, OPENGL);
-  setupGUI(); 
+  setupGUI();
   colorMode(HSB, 360, 100, 100);
-  for (int i=0; i<agents.length; i++) agents[i]=new Agent();
+  for (int i=0; i < agents.length; i++) agents[i]=new Agent();
   tiler=new TileSaver(this);
 }
 
@@ -80,17 +80,17 @@ void draw() {
   hint(ENABLE_DEPTH_TEST);
 
   // for high quality output
-  if (tiler==null) return; 
+  if (tiler==null) return;
   tiler.pre();
 
   background(0, 0, 100);
   smooth();
   lights();
 
-  pushMatrix(); 
+  pushMatrix();
 
   // ------ set view ------
-  translate(width/2, height/2, zoom); 
+  translate(width/2, height/2, zoom);
   println(mousePressed + ", " + mouseButton + ", " + RIGHT);
   if (mousePressed && mouseButton==RIGHT) {
     offsetX = mouseX-clickX;
@@ -98,20 +98,20 @@ void draw() {
     targetRotationX = min(max(clickRotationX + offsetY/float(width) * TWO_PI, -HALF_PI), HALF_PI);
     targetRotationY = clickRotationY + offsetX/float(height) * TWO_PI;
   }
-  rotationX += (targetRotationX-rotationX)*0.25; 
-  rotationY += (targetRotationY-rotationY)*0.25;  
+  rotationX += (targetRotationX-rotationX)*0.25;
+  rotationY += (targetRotationY-rotationY)*0.25;
   rotateX(-rotationX);
-  rotateY(rotationY); 
+  rotateY(rotationY);
 
   noFill();
   stroke(192, 100, 64);
-  strokeWeight(1); 
+  strokeWeight(1);
   box(spaceSizeX*2, spaceSizeY*2, spaceSizeZ*2);
 
   // ------ update and draw agents ------
   agentColor = color(0, 0, 0, agentAlpha);
-  for (int i=0; i<agentsCount; i++) {
-    if (freeze == false) agents[i].update(); 
+  for (int i=0; i < agentsCount; i++) {
+    if (freeze == false) agents[i].update();
     agents[i].draw();
   }
   popMatrix();
@@ -159,4 +159,3 @@ void mousePressed() {
 String timestamp() {
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", Calendar.getInstance());
 }
-

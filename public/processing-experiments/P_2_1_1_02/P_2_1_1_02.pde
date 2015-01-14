@@ -1,5 +1,5 @@
 // P_2_1_1_02.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,12 +18,12 @@
 
 /**
  * changing strokeweight on diagonals in a grid with colors
- * 	 
+ *
  * MOUSE
  * position x          : left diagonal strokeweight
  * position y          : right diagonal strokeweight
  * left click          : new random layout
- * 
+ *
  * KEYS
  * s                   : save png
  * p                   : save pdf
@@ -36,7 +36,7 @@
  * 7                   : transparency right diagonal
  * 0                   : default
  */
- 
+
 import processing.pdf.*;
 import java.util.Calendar;
 
@@ -61,17 +61,17 @@ void setup() {
 
 void draw() {
   if (savePDF) beginRecord(PDF, timestamp()+".pdf");
-  
+
   colorMode(HSB, 360, 100, 100, 100);
   background(360);
   smooth();
   noFill();
   strokeCap(actStrokeCap);
-  
+
   randomSeed(actRandomSeed);
 
-  for (int gridY=0; gridY<tileCount; gridY++) {
-    for (int gridX=0; gridX<tileCount; gridX++) {
+  for (int gridY=0; gridY < tileCount; gridY++) {
+    for (int gridX=0; gridX < tileCount; gridX++) {
 
       int posX = width/tileCount*gridX;
       int posY = height/tileCount*gridY;
@@ -90,7 +90,7 @@ void draw() {
       }
     }
   }
-  
+
   if (savePDF) {
     savePDF = false;
     endRecord();
@@ -106,26 +106,26 @@ void mousePressed() {
 void keyReleased(){
   if (key == 's' || key == 'S') saveFrame(timestamp()+"_##.png");
   if (key == 'p' || key == 'P') savePDF = true;
-  
-  if (key == '1') actStrokeCap = ROUND;  
+
+  if (key == '1') actStrokeCap = ROUND;
   if (key == '2') actStrokeCap = SQUARE;
-  if (key == '3') actStrokeCap = PROJECT; 
-  
+  if (key == '3') actStrokeCap = PROJECT;
+
   if (key == '4'){
     if (colorLeft == color(0)) {
       colorLeft = color(323, 100, 77);
     } else {
       colorLeft = color(0);
-    } 
+    }
   }
   if (key == '5'){
     if (colorRight == color(0)) {
       colorRight = color(273, 73, 51);
     } else {
       colorRight = color(0);
-    } 
+    }
   }
-  
+
   if (key == '6') {
     if (alphaLeft == 100) {
       alphaLeft = 50;
@@ -140,7 +140,7 @@ void keyReleased(){
       alphaRight = 100;
     }
   }
-    
+
   if (key == '0'){
     actStrokeCap = ROUND;
     colorLeft = color(0);
@@ -156,9 +156,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-
-

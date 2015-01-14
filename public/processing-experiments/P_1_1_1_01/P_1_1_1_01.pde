@@ -1,5 +1,5 @@
 // P_1_1_1_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,10 +18,10 @@
 
 /**
  * draw the color spectrum by moving the mouse
- * 	 
+ *
  * MOUSE
  * position x/y        : resolution
- * 
+ *
  * KEYS
  * s                   : save png
  * p                   : save pdf
@@ -48,8 +48,8 @@ void draw(){
 
   stepX = mouseX+2;
   stepY = mouseY+2;
-  for (int gridY=0; gridY<height; gridY+=stepY){
-    for (int gridX=0; gridX<width; gridX+=stepX){
+  for (int gridY=0; gridY < height; gridY+=stepY){
+    for (int gridX=0; gridX < width; gridX+=stepX){
       fill(gridX, height-gridY, 100);
       rect(gridX, gridY, stepX, stepY);
     }
@@ -71,5 +71,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-

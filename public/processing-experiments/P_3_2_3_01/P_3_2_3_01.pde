@@ -1,5 +1,5 @@
 // P_3_2_3_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -22,10 +22,10 @@
 
 /**
  * fontgenerator with dynamic elements. letter ouline consist of linked agents.
- * 
+ *
  * MOUSE
  * press + position x  : letter distortion
- * 
+ *
  * KEYS
  * a-z                 : text input (keyboard)
  * shift               : freeze current state
@@ -60,9 +60,9 @@ RPoint[] pnts;
 boolean freeze = false;
 
 void setup() {
-  size(1200,800); 
+  size(1200,800);
   // make window resizable
-  frame.setResizable(true);  
+  frame.setResizable(true);
   smooth();
 
   frameRate(15);
@@ -85,7 +85,7 @@ void setup() {
 
   grp = font.toGroup(typedKey+"");
   textW = grp.getWidth();
-  pnts = grp.getPoints(); 
+  pnts = grp.getPoints();
 
   background(255);
 }
@@ -106,7 +106,7 @@ void draw() {
     // let the points dance
     for (int i = 0; i < pnts.length; i++ ) {
       pnts[i].x += random(-stepSize,stepSize)*danceFactor;
-      pnts[i].y += random(-stepSize,stepSize)*danceFactor;  
+      pnts[i].y += random(-stepSize,stepSize)*danceFactor;
     }
 
     //  ------ lines: connected rounded  ------
@@ -116,7 +116,7 @@ void draw() {
     // start controlpoint
     curveVertex(pnts[pnts.length-1].x,pnts[pnts.length-1].y);
     // only these points are drawn
-    for (int i=0; i<pnts.length; i++){
+    for (int i=0; i < pnts.length; i++){
       curveVertex(pnts[i].x, pnts[i].y);
     }
     curveVertex(pnts[0].x, pnts[0].y);
@@ -128,7 +128,7 @@ void draw() {
     strokeWeight(0.1);
     stroke(0);
     beginShape();
-    for (int i=0; i<pnts.length; i++){
+    for (int i=0; i < pnts.length; i++){
       vertex(pnts[i].x, pnts[i].y);
       ellipse(pnts[i].x, pnts[i].y, 7, 7);
     }
@@ -146,8 +146,8 @@ void keyReleased() {
     freeze = !freeze;
     if (freeze == true) noLoop();
     else loop();
-  } 
-  
+  }
+
   // ------ pdf export ------
   // press CONTROL to start pdf recordPDF and ALT to stop it
   // ONLY by pressing ALT the pdf is saved to disk!
@@ -157,14 +157,14 @@ void keyReleased() {
       println("recording started");
       recordPDF = true;
     }
-  } 
+  }
   else if (keyCode == ALT) {
     if (recordPDF) {
       println("recording stopped");
       endRecord();
       recordPDF = false;
     }
-  } 
+  }
 }
 
 void keyPressed() {
@@ -172,7 +172,7 @@ void keyPressed() {
     switch(key) {
     case ENTER:
     case RETURN:
-      grp = font.toGroup(""); 
+      grp = font.toGroup("");
       letterY += lineSpacing;
       textW = letterX = 20;
       break;
@@ -182,14 +182,14 @@ void keyPressed() {
     case BACKSPACE:
     case DELETE:
       background(255);
-      grp = font.toGroup(""); 
+      grp = font.toGroup("");
       textW = letterX = 0;
       letterY = lineSpacing;
       freeze = false;
       loop();
       break;
     case ' ':
-      grp = font.toGroup(""); 
+      grp = font.toGroup("");
       letterX += spaceWidth;
       freeze = false;
       loop();
@@ -201,11 +201,11 @@ void keyPressed() {
       letterX += textW;
       grp = font.toGroup(typedKey+"");
       textW = grp.getWidth();
-      pnts = grp.getPoints(); 
+      pnts = grp.getPoints();
       freeze = false;
       loop();
     }
-  } 
+  }
 }
 
 // timestamp
@@ -213,36 +213,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

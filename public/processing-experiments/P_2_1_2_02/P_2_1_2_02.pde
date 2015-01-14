@@ -1,5 +1,5 @@
 // P_2_1_2_02.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,12 +18,12 @@
 
 /**
  * changing module color and positions in a grid
- * 	 
+ *
  * MOUSE
  * position x          : offset x
  * position y          : offset y
  * left click          : random position
- * 
+ *
  * KEYS
  * 1-3                 : different sets of colors
  * 0                   : default
@@ -69,8 +69,8 @@ void draw() {
 
   randomSeed(actRandomSeed);
 
-  for (int gridY=0; gridY<tileCount; gridY++) {
-    for (int gridX=0; gridX<tileCount; gridX++) {
+  for (int gridY=0; gridY < tileCount; gridY++) {
+    for (int gridX=0; gridX < tileCount; gridX++) {
       float posX = width/tileCount * gridX;
       float posY = height/tileCount * gridY;
 
@@ -82,8 +82,8 @@ void draw() {
     }
   }
 
-  for (int gridY=0; gridY<tileCount; gridY++) {
-    for (int gridX=0; gridX<tileCount; gridX++) {
+  for (int gridY=0; gridY < tileCount; gridY++) {
+    for (int gridX=0; gridX < tileCount; gridX++) {
 
       float posX = width/tileCount * gridX;
       float posY = height/tileCount * gridY;
@@ -110,33 +110,33 @@ void keyReleased(){
   if (key == '1'){
     if (moduleColorBackground == color(0)) {
       moduleColorBackground = color(273, 73, 51);
-    } 
+    }
     else {
       moduleColorBackground = color(0);
-    } 
+    }
   }
   if (key == '2'){
     if (moduleColorForeground == color(360)) {
       moduleColorForeground = color(323, 100, 77);
-    } 
+    }
     else {
       moduleColorForeground = color(360);
-    } 
+    }
   }
 
   if (key == '3'){
     if (moduleAlphaBackground == 100) {
       moduleAlphaBackground = 50;
       moduleAlphaForeground = 50;
-    } 
+    }
     else {
       moduleAlphaBackground = 100;
       moduleAlphaForeground = 100;
-    } 
+    }
   }
 
 
-  if (key == '0'){  
+  if (key == '0'){
     moduleColorBackground = color(0);
     moduleColorForeground = color(360);
     moduleAlphaBackground = 100;
@@ -157,15 +157,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-
-
-
-
-
-
-
-

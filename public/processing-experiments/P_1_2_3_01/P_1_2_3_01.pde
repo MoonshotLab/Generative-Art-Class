@@ -1,5 +1,5 @@
 // P_1_2_3_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -17,11 +17,11 @@
 // limitations under the License.
 
 /**
- * generates specific color palettes  
- * 
+ * generates specific color palettes
+ *
  * MOUSE
  * position x/y        : row and coloum count
- * 
+ *
  * KEYS
  * 0-9                 : creates specific color palettes
  * s                   : save png
@@ -44,26 +44,26 @@ int[] saturationValues = new int[tileCountX];
 int[] brightnessValues = new int[tileCountX];
 
 
-void setup() { 
-  size(800,800); 
+void setup() {
+  size(800,800);
   colorMode(HSB,360,100,100,100);
   noStroke();
 
   // init with random values
-  for (int i=0; i<tileCountX; i++) {
+  for (int i=0; i < tileCountX; i++) {
     hueValues[i] = (int) random(0,360);
     saturationValues[i] = (int) random(0,100);
     brightnessValues[i] = (int) random(0,100);
   }
-} 
+}
 
 
-void draw() { 
+void draw() {
   if (savePDF) {
     beginRecord(PDF, timestamp()+".pdf");
     noStroke();
     colorMode(HSB,360,100,100,100);
-  } 
+  }
   // white back
   background(0,0,100);
 
@@ -77,7 +77,7 @@ void draw() {
   float tileHeight = height / (float) currentTileCountY;
 
   for (int gridY=0; gridY< tileCountY; gridY++) {
-    for (int gridX=0; gridX< tileCountX; gridX++) {  
+    for (int gridX=0; gridX< tileCountX; gridX++) {
       float posX = tileWidth*gridX;
       float posY = tileHeight*gridY;
       int index = counter % currentTileCountX;
@@ -93,75 +93,75 @@ void draw() {
     savePDF = false;
     endRecord();
   }
-} 
+}
 
 
-void keyReleased() {  
+void keyReleased() {
   if (key == 's' || key == 'S') saveFrame(timestamp()+"_##.png");
   if (key == 'p' || key == 'P') savePDF = true;
   if (key == 'c' || key == 'C') {
     // ------ save an ase file (adobe swatch export) ------
     // create palette
     color[] colors = new color[hueValues.length];
-    for (int i=0; i<hueValues.length; i++) {
+    for (int i=0; i < hueValues.length; i++) {
       colors[i] = color(hueValues[i],saturationValues[i],brightnessValues[i]);
     }
     GenerativeDesign.saveASE(this, colors, timestamp()+".ase");
   }
 
   if (key == '1') {
-    for (int i=0; i<tileCountX; i++) {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = (int) random(0,360);
       saturationValues[i] = (int) random(0,100);
       brightnessValues[i] = (int) random(0,100);
     }
   }
-  if (key == '2') { 
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '2') {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = (int) random(0,360);
       saturationValues[i] = (int) random(0,100);
       brightnessValues[i] = 100;
     }
   }
-  if (key == '3') {  
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '3') {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = (int) random(0,360);
       saturationValues[i] = 100;
       brightnessValues[i] = (int) random(0,100);
     }
-  } 
+  }
 
-  if (key == '4') {  
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '4') {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = 0;
       saturationValues[i] = 0;
       brightnessValues[i] = (int) random(0,100);
     }
   }
-  if (key == '5') {  
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '5') {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = 195;
       saturationValues[i] = 100;
       brightnessValues[i] = (int) random(0,100);
     }
   }
-  if (key == '6') {  
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '6') {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = 195;
       saturationValues[i] = (int) random(0,100);
       brightnessValues[i] = 100;
     }
   }
 
-  if (key == '7') {  
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '7') {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = (int) random(0,180);
       saturationValues[i] = (int) random(80,100);
       brightnessValues[i] = (int) random(50,90);
     }
   }
-  if (key == '8') {  
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '8') {
+    for (int i=0; i < tileCountX; i++) {
       hueValues[i] = (int) random(180,360);
       saturationValues[i] = (int) random(80,100);
       brightnessValues[i] = (int) random(50,90);
@@ -169,12 +169,12 @@ void keyReleased() {
   }
 
   if (key == '9') {
-    for (int i=0; i<tileCountX; i++) {
+    for (int i=0; i < tileCountX; i++) {
       if (i%2 == 0) {
         hueValues[i] = (int) random(0,360);
         saturationValues[i] = 100;
         brightnessValues[i] = (int) random(0,100);
-      } 
+      }
       else {
         hueValues[i] = 195;
         saturationValues[i] = (int) random(0,100);
@@ -182,13 +182,13 @@ void keyReleased() {
       }
     }
   }
-  if (key == '0') {  
-    for (int i=0; i<tileCountX; i++) {
+  if (key == '0') {
+    for (int i=0; i < tileCountX; i++) {
       if (i%2 == 0) {
         hueValues[i] = (int) 192;
         saturationValues[i] = (int) random(0,100);
         brightnessValues[i] = (int) random(10,100);
-      } 
+      }
       else {
         hueValues[i] = 273;
         saturationValues[i] = (int) random(0,100);
@@ -205,10 +205,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-
-
-

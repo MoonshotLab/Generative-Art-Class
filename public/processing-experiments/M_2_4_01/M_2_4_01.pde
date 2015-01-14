@@ -1,6 +1,6 @@
 // M_2_4_01.pde
 // TileSaver.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -30,7 +30,7 @@
  * arrow left/right    : phi x -/+
  * arrow down/up       : phi y -/+
  * s                   : save png
- * p                   : high resolution export (please update to processing 1.0.8 or 
+ * p                   : high resolution export (please update to processing 1.0.8 or
  *                       later. otherwise this will not work properly)
  */
 
@@ -49,7 +49,7 @@ PVector lissajousPoints[];
 
 // ------ mouse interaction ------
 int offsetX = 0, offsetY = 0, clickX = 0, clickY = 0, zoom=-400;
-float rotationX = 0, rotationY = 0, targetRotationX = 0, targetRotationY = 0, clickRotationX, clickRotationY; 
+float rotationX = 0, rotationY = 0, targetRotationX = 0, targetRotationY = 0, clickRotationX, clickRotationY;
 
 // ------ image output ------
 boolean saveOneFrame = false;
@@ -68,30 +68,30 @@ void setup() {
 
 void draw() {
   // for high quality output
-  if(tiler==null) return; 
+  if(tiler==null) return;
   tiler.pre();
 
   background(255);
   lights();
 
   // ------ set view ------
-  translate(width/2, height/2, zoom); 
+  translate(width/2, height/2, zoom);
   if (mousePressed && mouseButton==RIGHT) {
     offsetX = mouseX-clickX;
     offsetY = mouseY-clickY;
     targetRotationX = min(max(clickRotationX + offsetY/float(width) * TWO_PI, -HALF_PI), HALF_PI);
     targetRotationY = clickRotationY + offsetX/float(height) * TWO_PI;
   }
-  rotationX += (targetRotationX-rotationX)*0.25; 
-  rotationY += (targetRotationY-rotationY)*0.25;  
+  rotationX += (targetRotationX-rotationX)*0.25;
+  rotationY += (targetRotationY-rotationY)*0.25;
   rotateX(-rotationX);
-  rotateY(rotationY); 
+  rotateY(rotationY);
 
 
   // ------ draw triangles ------
   noStroke();
-  beginShape(TRIANGLE_FAN);  
-  for(int i=0; i<pointCount-2; i++) {
+  beginShape(TRIANGLE_FAN);
+  for(int i=0; i < pointCount-2; i++) {
     if (i%3 == 0) {
       //gradient for every trinangle to lissajou path
       fill(50);
@@ -109,7 +109,7 @@ void draw() {
   strokeWeight(1);
   noFill();
   beginShape();
-  for (int i=0; i<=pointCount; i++){
+  for (int i=0; i <= pointCount; i++){
     vertex(lissajousPoints[i].x, lissajousPoints[i].y, lissajousPoints[i].z);
   }
   endShape();
@@ -160,7 +160,7 @@ void keyPressed(){
 
   calculateLissajousPoints();
 
-  println("freqX: " + freqX + ", freqY: " + freqY + ", freqZ: " + freqZ + ", phiX: " + phiX + ", phiY: " + phiY); 
+  println("freqX: " + freqX + ", freqY: " + freqY + ", freqZ: " + freqZ + ", phiX: " + phiX + ", phiY: " + phiY);
 }
 
 
@@ -175,31 +175,3 @@ void mousePressed(){
 String timestamp() {
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", Calendar.getInstance());
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

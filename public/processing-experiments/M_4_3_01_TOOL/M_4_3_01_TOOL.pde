@@ -1,6 +1,6 @@
 // M_4_3_01_TOOL.pde
 // GUI.pde, TileSaver.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -87,7 +87,7 @@ boolean drawCurves = false;
 // nodes array
 Node[][][] nodes = new Node[9][maxCount*2+1][maxCount*2+1];
 
-// attraktor 
+// attraktor
 Attractor myAttractor;
 
 
@@ -128,7 +128,7 @@ void setup() {
 
   // init attractor
   myAttractor = new Attractor();
-  myAttractor.setMode(Attractor.SMOOTH); 
+  myAttractor.setMode(Attractor.SMOOTH);
 
   // init grid
   reset();
@@ -154,7 +154,7 @@ void draw() {
   if (invertBackground) {
     bgColor = color(0);
     circleColor = color(255);
-  } 
+  }
   background(bgColor);
 
 
@@ -196,10 +196,10 @@ void draw() {
   }
 
   if (attractorSmooth) {
-    myAttractor.setMode(Attractor.SMOOTH); 
+    myAttractor.setMode(Attractor.SMOOTH);
   }
   else {
-    myAttractor.setMode(Attractor.TWIRL); 
+    myAttractor.setMode(Attractor.TWIRL);
   }
 
   myAttractor.radius = attractorRadius;
@@ -207,16 +207,16 @@ void draw() {
   if (mousePressed && mouseButton==LEFT && !guiEvent) {
     if (!keyPressed) {
       // attraction, if left click
-      myAttractor.strength = -attractorStrength; 
-    } 
+      myAttractor.strength = -attractorStrength;
+    }
     else if (keyPressed && keyCode == SHIFT) {
       // repulsion, if shift + left click
-      myAttractor.strength = attractorStrength; 
+      myAttractor.strength = attractorStrength;
     }
-  } 
+  }
   else {
     // otherwise no attraction or repulsion
-    myAttractor.strength = 0; 
+    myAttractor.strength = 0;
   }
 
   // set attractor at the mouse position
@@ -234,7 +234,7 @@ void draw() {
           myAttractor.attract(nodes[iz][iy][ix]);
           nodes[iz][iy][ix].update(lockX, lockY, false);
         }
-      }  
+      }
     }
   }
 
@@ -253,12 +253,12 @@ void draw() {
         drawLine(nodes[iz][iy], xCount, drawCurves);
 
         if (savePDF) {
-          println("saving to pdf – step " + (stepI++)); 
+          println("saving to pdf – step " + (stepI++));
         }
       }
     }
     lineDrawn = true;
-  } 
+  }
 
   // y
   if (drawY && yCount > 0) {
@@ -273,12 +273,12 @@ void draw() {
         }
         drawLine(pts, yCount, drawCurves);
         if (savePDF) {
-          println("saving to pdf – step " + (stepI++)); 
+          println("saving to pdf – step " + (stepI++));
         }
       }
     }
     lineDrawn = true;
-  } 
+  }
 
   // if no lines were drawn, draw dots
   if (!lineDrawn) {
@@ -289,9 +289,9 @@ void draw() {
         for (int ix = maxCount-xCount; ix <= maxCount+xCount; ix++) {
           Node n = nodes[iz][iy][ix];
           if (savePDF) {
-            println("saving to pdf – step " + (stepI++)); 
+            println("saving to pdf – step " + (stepI++));
             ellipse(n.x, n.y, lineWeight/2, lineWeight/2);
-          } 
+          }
           else {
             point(n.x, n.y);
           }
@@ -349,8 +349,8 @@ void drawLine(PVector[] points, int len, boolean curves) {
   // this funktion draws a line from an array of PVectors
   // len    : number of points to each side of the center index of the array
   //          example: array-length=21, len=5 -> points[5] to points[15] will be drawn
-  // curves : if true, points will be connected with curves (a bit like curveVertex, 
-  //          not as accurate, but faster) 
+  // curves : if true, points will be connected with curves (a bit like curveVertex,
+  //          not as accurate, but faster)
 
   PVector d1 = new PVector();
   PVector d2 = new PVector();
@@ -378,7 +378,7 @@ void drawLine(PVector[] points, int len, boolean curves) {
         // how to distribute d2 to the anchors
         q1 = l1 / (l1+l2);
         q2 = l2 / (l1+l2);
-      } 
+      }
       else {
         // special handling for the last index
         l1 = PVector.dist(points[i], points[i-1]);
@@ -388,16 +388,16 @@ void drawLine(PVector[] points, int len, boolean curves) {
         q2 = 0;
       }
       // draw bezierVertex
-      bezierVertex(points[i-1].x+d1.x*q0, points[i-1].y+d1.y*q0, 
+      bezierVertex(points[i-1].x+d1.x*q0, points[i-1].y+d1.y*q0,
       points[i].x-d2.x*q1, points[i].y-d2.y*q1,
       points[i].x, points[i].y);
       // remember d2 and q2 for the next iteration
       d1.set(d2);
       q0 = q2;
-    } 
+    }
     else {
       vertex(points[i].x, points[i].y);
-    }  
+    }
   }
 
   endShape();
@@ -422,7 +422,7 @@ void initGrid() {
           n.maxY = 20000;
           n.minZ = 0;
           n.maxZ = 0;
-        } 
+        }
         else {
           n = nodes[iz][iy][ix];
           n.x = xPos;
@@ -502,7 +502,7 @@ void set1() {
 
 void set2() {
   colors = new color[1];
-  colors[0] = color(0, 130, 164); 
+  colors[0] = color(0, 130, 164);
 
   setParas(100, 100, 1, 4, 4, 100, 3, 1, 0.1, true, 2, 75, true, false, false, true, false, false);
   initGrid();
@@ -524,9 +524,9 @@ void set4() {
   colorMode(HSB, 360, 100, 100, 100);
   colors = new color[3];
 
-  colors[0] = color(273, 73, 51); 
-  colors[1] = color(52, 100, 71); 
-  colors[2] = color(192, 100, 64); 
+  colors[0] = color(273, 73, 51);
+  colors[1] = color(52, 100, 71);
+  colors[2] = color(192, 100, 64);
 
   colorMode(RGB, 255, 255, 255, 100);
 
@@ -536,7 +536,7 @@ void set4() {
 
 
 void setParas(int theXCount, int theYCount, int theLayerCount, float theGridStepX, float theGridStepY,
-float theAttractorRadius, float theAttractorStrength, float theAttractorRamp, float theNodeDamping, 
+float theAttractorRadius, float theAttractorStrength, float theAttractorRamp, float theNodeDamping,
 boolean theInvertBackground, float theLineWeigth, float theLineAlpha, boolean theDrawX, boolean theDrawY, boolean theDrawCurves, boolean theAttractorTwirl,
 boolean theLockX, boolean theLockY) {
 
@@ -612,11 +612,11 @@ void setActLayer(int theLayer) {
   actLayer = theLayer;
 
   if (theLayer == -1) {
-    infoBang.setLabel("Currently affected layer: all"); 
+    infoBang.setLabel("Currently affected layer: all");
     for (int i = 0; i < 9; i++) {
       freezeLayer(i);
     }
-  } 
+  }
   else {
     infoBang.setLabel("Currently affected layer: " + (theLayer+1));
     freezeLayer(actLayer);
@@ -633,7 +633,7 @@ void freezeLayer(int iz) {
       n.velocity.y = 0;
       n.velocity.z = 0;
     }
-  } 
+  }
 }
 
 
@@ -653,11 +653,11 @@ void keyPressed(){
     guiEvent = false;
   }
   if(key=='s' || key=='S') {
-    saveOneFrame = true; 
+    saveOneFrame = true;
   }
   if(key=='p' || key=='P') {
     savePDF = true;
-    saveOneFrame = true; 
+    saveOneFrame = true;
     println("saving to pdf - starting (this may take some time)");
   }
 
@@ -668,7 +668,7 @@ void keyPressed(){
   }
 
   int k = int(key)-49;
-  if (k>=0 && k<9 && k<layerCount) {
+  if (k>=0 && k < 9 && k < layerCount) {
     setActLayer(k);
   }
   if (key=='0') {
@@ -710,5 +710,3 @@ void mouseExited(MouseEvent e) {
 String timestamp() {
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", Calendar.getInstance());
 }
-
-

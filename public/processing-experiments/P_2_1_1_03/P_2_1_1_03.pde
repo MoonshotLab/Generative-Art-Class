@@ -1,5 +1,5 @@
 // P_2_1_1_03.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,12 +18,12 @@
 
 /**
  * changing number, color and strokeweight on diagonals in a grid
- * 	 
+ *
  * MOUSE
  * position x          : diagonal strokeweight
  * position y          : number diagonals
  * left click          : new random layout
- * 
+ *
  * KEYS
  * s                   : save png
  * p                   : save pdf
@@ -72,16 +72,16 @@ void draw() {
 
   tileCount = mouseY/15;
 
-  for (int gridY=0; gridY<tileCount; gridY++) {
-    for (int gridX=0; gridX<tileCount; gridX++) {
+  for (int gridY=0; gridY < tileCount; gridY++) {
+    for (int gridX=0; gridX < tileCount; gridX++) {
 
       float posX = width/tileCount*gridX;
       float posY = height/tileCount*gridY;
 
-      if (transparentLeft == true) alphaLeft = gridY*10; 
+      if (transparentLeft == true) alphaLeft = gridY*10;
       else alphaLeft = 100;
 
-      if (transparentRight == true) alphaRight = 100-gridY*10; 
+      if (transparentRight == true) alphaRight = 100-gridY*10;
       else alphaRight = 100;
 
       int toggle = (int) random(0,2);
@@ -118,19 +118,19 @@ void keyReleased(){
   if (key == '1'){
     if (colorLeft == color(273, 73, 51)) {
       colorLeft = color(323, 100, 77);
-    } 
+    }
     else {
       colorLeft = color(273, 73, 51);
       //      colorLeft = color(0);
-    } 
+    }
   }
   if (key == '2'){
     if (colorRight == color(0)) {
       colorRight = color(192, 100, 64);
-    } 
+    }
     else {
       colorRight = color(0);
-    } 
+    }
   }
   if (key == '3'){
     transparentLeft =! transparentLeft;
@@ -153,14 +153,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-
-
-
-
-
-
-

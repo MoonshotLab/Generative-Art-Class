@@ -1,5 +1,5 @@
 // P_2_1_2_04.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,12 +18,12 @@
 
 /**
  * moving corners of rectangles in a grid
- * 	 
+ *
  * MOUSE
  * position x          : corner position offset x
  * position y          : corner position offset y
  * left click          : random position
- * 
+ *
  * KEYS
  * s                   : save png
  * p                   : save pdf
@@ -35,7 +35,7 @@ import java.util.Calendar;
 
 boolean savePDF = false;
 
- 
+
 int tileCount = 20;
 int rectSize = 30;
 
@@ -60,9 +60,9 @@ void draw() {
 
   randomSeed(actRandomSeed);
 
-  for (int gridY=0; gridY<tileCount; gridY++) {
-    for (int gridX=0; gridX<tileCount; gridX++) {
-      
+  for (int gridY=0; gridY < tileCount; gridY++) {
+    for (int gridX=0; gridX < tileCount; gridX++) {
+
       int posX = width/tileCount * gridX;
       int posY = height/tileCount * gridY;
 
@@ -74,7 +74,7 @@ void draw() {
       float shiftY3 = mouseY/20 * random(-1, 1);
       float shiftX4 = mouseX/20 * random(-1, 1);
       float shiftY4 = mouseY/20 * random(-1, 1);
-     
+
       beginShape();
       vertex(posX+shiftX1, posY+shiftY1);
       vertex(posX+rectSize+shiftX2, posY+shiftY2);
@@ -82,8 +82,8 @@ void draw() {
       vertex(posX+shiftX4, posY+rectSize+shiftY4);
       endShape(CLOSE);
     }
-  } 
-  
+  }
+
   if (savePDF) {
     savePDF = false;
     endRecord();
@@ -106,5 +106,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-

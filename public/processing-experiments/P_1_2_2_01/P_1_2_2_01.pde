@@ -1,5 +1,5 @@
 // P_1_2_2_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,10 +18,10 @@
 
 /**
  * extract and sort the color palette of an image
- * 	 
+ *
  * MOUSE
  * position x          : resolution
- * 
+ *
  * KEYS
  * 1-3                 : load different images
  * 4                   : no color sorting
@@ -52,7 +52,7 @@ void setup(){
   colorMode(HSB, 360, 100, 100, 100);
   noStroke();
   noCursor();
-  img = loadImage("pic1.jpg"); 
+  img = loadImage("pic1.jpg");
 }
 
 
@@ -67,10 +67,10 @@ void draw(){
   float rectSize = width / float(tileCount);
 
   // get colors from image
-  int i = 0; 
+  int i = 0;
   colors = new color[tileCount*tileCount];
-  for (int gridY=0; gridY<tileCount; gridY++) {
-    for (int gridX=0; gridX<tileCount; gridX++) {
+  for (int gridY=0; gridY < tileCount; gridY++) {
+    for (int gridX=0; gridX < tileCount; gridX++) {
       int px = (int) (gridX * rectSize);
       int py = (int) (gridY * rectSize);
       colors[i] = img.get(px, py);
@@ -80,12 +80,12 @@ void draw(){
 
   // sort colors
   if (sortMode != null) colors = GenerativeDesign.sortColors(this, colors, sortMode);
-  
+
 
   // draw grid
   i = 0;
-  for (int gridY=0; gridY<tileCount; gridY++) {
-    for (int gridX=0; gridX<tileCount; gridX++) {
+  for (int gridY=0; gridY < tileCount; gridY++) {
+    for (int gridX=0; gridX < tileCount; gridX++) {
       fill(colors[i]);
       rect(gridX*rectSize, gridY*rectSize, rectSize, rectSize);
       i++;
@@ -105,8 +105,8 @@ void keyReleased(){
   if (key=='p' || key=='P') savePDF = true;
 
   if (key == '1') img = loadImage("pic1.jpg");
-  if (key == '2') img = loadImage("pic2.jpg"); 
-  if (key == '3') img = loadImage("pic3.jpg"); 
+  if (key == '2') img = loadImage("pic2.jpg");
+  if (key == '3') img = loadImage("pic3.jpg");
 
   if (key == '4') sortMode = null;
   if (key == '5') sortMode = GenerativeDesign.HUE;
@@ -121,15 +121,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-
-
-
-
-
-
-
-

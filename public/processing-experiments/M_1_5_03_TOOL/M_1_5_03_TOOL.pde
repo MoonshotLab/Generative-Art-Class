@@ -1,6 +1,6 @@
 // M_1_5_03_TOOL.pde
 // Agent.pde, GUI.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -19,7 +19,7 @@
 
 /**
  * noise values (noise 3d) are used to animate a bunch of agents.
- * 
+ *
  * KEYS
  * m                   : toogle menu open/close
  * 1-2                 : switch noise mode
@@ -48,7 +48,7 @@ void setup(){
   size(1280,800,P2D);
   smooth();
 
-  for(int i=0; i<agents.length; i++) agents[i] = new Agent();
+  for(int i=0; i < agents.length; i++) agents[i] = new Agent();
 
   setupGUI();
 }
@@ -61,10 +61,10 @@ void draw(){
   stroke(0, agentsAlpha);
   //draw agents
   if (drawMode == 1) {
-    for(int i=0; i<agentsCount; i++) agents[i].update1();
-  } 
+    for(int i=0; i < agentsCount; i++) agents[i].update1();
+  }
   else {
-    for(int i=0; i<agentsCount; i++) agents[i].update2();
+    for(int i=0; i < agentsCount; i++) agents[i].update2();
   }
 
   drawGUI();
@@ -87,8 +87,3 @@ void keyReleased(){
 String timestamp() {
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", Calendar.getInstance());
 }
-
-
-
-
-

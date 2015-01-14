@@ -1,5 +1,5 @@
 // P_2_2_3_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,11 +18,11 @@
 
 /**
  * form mophing process by connected random agents
- * 
+ *
  * MOUSE
  * click               : start a new circe
  * position x/y        : direction of floating
- * 
+ *
  * KEYS
  * 1-2                 : fill styles
  * f                   : freeze. loop on/off
@@ -54,12 +54,12 @@ void setup(){
   smooth();
 
   // init form
-  centerX = width/2; 
+  centerX = width/2;
   centerY = height/2;
   float angle = radians(360/float(formResolution));
-  for (int i=0; i<formResolution; i++){
+  for (int i=0; i < formResolution; i++){
     x[i] = cos(angle*i) * initRadius;
-    y[i] = sin(angle*i) * initRadius;  
+    y[i] = sin(angle*i) * initRadius;
   }
 
   stroke(0, 50);
@@ -75,7 +75,7 @@ void draw(){
   }
 
   // calculate new points
-  for (int i=0; i<formResolution; i++){
+  for (int i=0; i < formResolution; i++){
     x[i] += random(-stepSize,stepSize);
     y[i] += random(-stepSize,stepSize);
     // ellipse(x[i], y[i], 5, 5);
@@ -90,7 +90,7 @@ void draw(){
   curveVertex(x[formResolution-1]+centerX, y[formResolution-1]+centerY);
 
   // only these points are drawn
-  for (int i=0; i<formResolution; i++){
+  for (int i=0; i < formResolution; i++){
     curveVertex(x[i]+centerX, y[i]+centerY);
   }
   curveVertex(x[0]+centerX, y[0]+centerY);
@@ -104,11 +104,11 @@ void draw(){
 // events
 void mousePressed() {
   //init form on mouse position
-  centerX = mouseX; 
+  centerX = mouseX;
   centerY = mouseY;
   float angle = radians(360/float(formResolution));
   float radius = initRadius * random(0.5,1.0);
-  for (int i=0; i<formResolution; i++){
+  for (int i=0; i < formResolution; i++){
     x[i] = cos(angle*i) * radius;
     y[i] = sin(angle*i) * radius;
   }
@@ -132,15 +132,15 @@ void keyReleased() {
       recordPDF = true;
       stroke(0, 50);
     }
-  } 
+  }
   else if (key == 'e' || key =='E') {
     if (recordPDF) {
       println("recording stopped");
       endRecord();
       recordPDF = false;
-      background(255); 
+      background(255);
     }
-  } 
+  }
 
   // switch draw loop on/off
   if (key == 'f' || key == 'F') freeze = !freeze;
@@ -154,12 +154,3 @@ String timestamp() {
   Calendar now = Calendar.getInstance();
   return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }
-
-
-
-
-
-
-
-
-
