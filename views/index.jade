@@ -2,6 +2,9 @@ extends layout
 
 block content
   .grid
-    each example in examples
+    each example in examples.P
+      a(href="/example/#{example.directory}")
+        .item.three(style="background-image:url(/processing-experiments/#{example.directory}/#{example.image})")
+    each example in examples.M
       a(href="/example/#{example.directory}")
         .item.three(style="background-image:url(/processing-experiments/#{example.directory}/#{example.image})")
