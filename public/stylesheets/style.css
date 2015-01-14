@@ -5,6 +5,10 @@ body {
   color: rgba(0,0,0,.8);
 }
 
+pre{
+  margin-top: 0;
+}
+
 .grid{
   width: 100%;
 }
@@ -52,6 +56,11 @@ body {
   padding-bottom: 66.6666%;
 }
 
+.grid .item.twelve{
+  width: 100%;
+  padding-bottom: 100%;
+}
+
 a.button{
   padding: 7px 10px;
   color: rgba(0,0,0,.8);
@@ -63,4 +72,11 @@ a.button{
 
 a.button:hover{
   background-color: rgba(0,0,0,.05);
+}
+
+
+.grid.example .button{
+  display: inline-block;
+  margin: 10px;
+  float: right;
 }
