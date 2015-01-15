@@ -42,9 +42,9 @@
 ## x ↔
 ## y ↕
 
-### need a photo of a grid here
+---
 
-![](http://fc09.deviantart.net/fs71/f/2011/094/d/a/drawing_grid_by_blossomhillstables-d3d70y5.png)
+![fit](http://fc05.deviantart.net/fs71/f/2011/331/6/5/grid_texture_by_xjoeyxhd-d4hj068.png)
 
 ^ show how to create folder and save a file on your desktop
 
