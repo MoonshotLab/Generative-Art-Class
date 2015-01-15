@@ -6,6 +6,11 @@ html
     link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css')
     script(src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js')
   body
+    nav.primary
+      li
+        a(href='/') Documentation
+      li
+        a(href='/examples') Examples
     block content
     script.
       hljs.initHighlightingOnLoad();
