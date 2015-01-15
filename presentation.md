@@ -320,6 +320,7 @@
 ```
 
 ^ How would you draw a vertical grid of boxes
+^ Challenge: Can you make a checkerboard?
 ^ Challenge: Can you draw a bulls eye?
 
 ---
