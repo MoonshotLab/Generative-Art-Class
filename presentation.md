@@ -284,10 +284,10 @@
   PImage img;
 
   void setup(){
-    img = loadImage("myFace.jpg");
+    img = loadImage("santa-steve.jpg");
   }
 
-  void loop(){
+  void draw(){
     image(img, mouseX, mouseY, 300, 200);
   }
 ```
