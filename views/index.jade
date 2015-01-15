@@ -1,10 +1,363 @@
 extends layout
 
 block content
-  .grid
-    each example in examples.P
-      a(href="/example/#{example.directory}")
-        .item.three(style="background-image:url(/processing-experiments/#{example.directory}/#{example.image})")
-    each example in examples.M
-      a(href="/example/#{example.directory}")
-        .item.three(style="background-image:url(/processing-experiments/#{example.directory}/#{example.image})")
+  .wrapper
+    .intro
+      h1 Generative Art 101
+      p Below is an abridged documentation for the <a href='http://processing.org' target='_blank'>processing</a> language. Full documentation can be found at the <a href='https://processing.org/reference/' target='_blank'>processing reference page</a>. All examples were drawn on a 500x500 stage.
+
+    nav.in-page
+      ul
+        li
+          a(href='#rectangles') Rectangle
+        li
+          a(href='#ellipses') Ellipse
+        li
+          a(href='#line') Line
+        li
+          a(href='#triangle') Triangle
+        li
+          a(href='#polygon') Polygon
+        li
+          a(href='#color') Color
+        li
+          a(href='#background') Background
+        li
+          a(href='#stage') Stage Size
+        li
+          a(href='#comments') Comments
+        li
+          a(href='#flow') Flow
+        li
+          a(href='#input') Detecting Input
+        li
+          a(href='#conditionals') If this...
+        li
+          a(href='#random') Random
+        li
+          a(href='#variables') Variables
+        li
+          a(href='#math') Math
+        li
+          a(href='#images') Images
+        li
+          a(href='#loops') Loops
+        li
+          a(href='#misc') Miscellaneous
+
+
+    .sample(id='rectangles')
+      h3 Rectangles
+      .row
+        .col
+          p Draws a rectangle, the x and y coordinates determine the top left corner of the shape.
+          pre.explanation
+            code(class='java')
+              | rect(x, y, width, height);
+          pre.sample
+            code(class='java')
+              | rect(125, 125, 250, 250);
+        .col.image(style='background-image:url(/images/rectangle.png)')
+
+
+    .sample(id='ellipses')
+      h3 Ellipses
+      .row
+        .col
+          p Draws an ellipse, the x and y coordinates determine the center of the shape.
+          pre.explanation
+            code(class='java')
+              | ellipse(x, y, width, height);
+          pre.sample
+            code(class='java')
+              | ellipse(250, 250, 250, 250);
+        .col.image(style='background-image:url(/images/ellipse.png)')
+
+
+    .sample(id='line')
+      h3 Line
+      .row
+        .col
+          p Draws a line based on four coordinates.
+          ul
+            li <strong>x1</strong> x-coordinate of the first point
+            li <strong>y1</strong> y-coordinate of the first point
+            li <strong>x2</strong> x-coordinate of the second point
+            li <strong>y2</strong> y-coordinate of the second point
+          pre.explanation
+            code(class='java')
+              | line(x1, y1, x2, y2);
+          pre.sample
+            code(class='java')
+              | line(100, 250, 400, 250);
+        .col.image(style='background-image:url(/images/line.png)')
+
+
+    .sample(id='triangle')
+      h3 Triangle
+      .row
+        .col
+          p Draws a triangle based on 6 points.
+          ul
+            li <strong>x1</strong> x-coordinate of the first point
+            li <strong>y1</strong> y-coordinate of the first point
+            li <strong>x2</strong> x-coordinate of the second point
+            li <strong>y2</strong> y-coordinate of the second point
+            li <strong>x3</strong> x-coordinate of the third point
+            li <strong>y3</strong> y-coordinate of the third point
+          pre.explanation
+            code(class='java')
+              | triangle(x1, y1, x2, y2, x3, y3);
+          pre.sample
+            code(class='java')
+              | triangle(250, 100, 400, 350, 100, 350);
+        .col.image(style='background-image:url(/images/triangle.png)')
+
+
+    .sample(id='polygon')
+      h3 Polygons
+      .row
+        .col
+          p Draws a series of connected lines to form a polygon.
+          pre.explanation
+            code(class='java')
+              | beginShape();
+              | vertex(x1,y1);
+              | vertex(x2,y2);
+              | vertex(x3,y3);
+              | vertex(x4,y4);
+              | vertex(x5,y5);
+              | endShape();
+          pre.sample
+            code(class='java')
+              | beginShape();
+              | vertex(250,100);
+              | vertex(400,215);
+              | vertex(330,400);
+              | vertex(150,400);
+              | vertex(100,215);
+              | vertex(250,100);
+              | endShape();
+        .col.image(style='background-image:url(/images/polygon.png)')
+
+
+    .sample(id='color')
+      h3 Color
+      .row
+        .col
+          p Select an RGB color for drawing, units are between 0 and 255.
+
+          pre.explanation
+            code(class='java')
+              | fill(Red, Green, Blue)
+          pre.sample
+            code(class='java')
+              | fill(255, 0, 0);
+              | rect(50, 175, 100, 100);
+              | fill(0, 255, 0);
+              | rect(200, 175, 100, 100);
+              | fill(0, 0, 255);
+              | rect(350, 175, 100, 100);
+        .col.image(style='background-image:url(/images/color.png)')
+
+
+    .sample(id='background')
+      h3 Background
+      .row
+        .col
+          p Select an RGB color for background usage, units are between 0 and 255.
+          pre.explanation
+            code(class='java')
+              | background(Red, Green, Blue)
+          pre.sample
+            code(class='java')
+              | background(100, 0, 100);
+        .col.image(style='background-image:url(/images/background.png)')
+
+
+    .sample(id='stage')
+      h3 Stage Size
+      .row
+        .col
+          p Set the size of the drawing stage.
+          pre.explanation
+            code(class='java')
+              | size(width, height)
+          pre.sample
+            code(class='java')
+              | size(500, 500);
+        .col.image(style='background-image:url(/images/stage.png)')
+
+
+    .sample(id='comments')
+      h3 Comments
+      .row
+        .col
+          p Select an RGB color for drawing, units are between 0 and 255.
+
+          pre.sample
+            code(class='java')
+              | // this is a code comment, it will not execute
+        .col
+
+
+    .sample(id='flow')
+      h3 Flow
+      .row
+        .col
+          p Select an RGB color for drawing, units are between 0 and 255.
+
+          pre.sample
+            code(class='java')
+              | void setup(){
+              |   // runs one time
+              | }
+              | void draw(){
+              |   // re-runs all the time
+              | }
+        .col
+
+
+    .sample(id='input')
+      h3 Detecting Input
+      .row
+        .col
+          p Commonly used inputs via the mouse:
+          ul
+            li <strong>mouseX</strong> the x position of the cursor
+            li <strong>mouseY</strong> the y position of the cursor
+            li <strong>mousePressed</strong> true or false dependent on the left mouse depressed state
+          p The example below attaches a rectangle to the cursor.
+
+          pre.sample
+            code(class='java')
+              | void draw(){
+              |   rect(mouseX, mouseY, 50, 50);
+              | }
+        .col
+
+
+    .sample(id='conditionals')
+      h3 Conditional Testing
+      .row
+        .col
+          p Test the truthiness of statements. Common comparators include:
+          ul
+            li <strong>==</strong> is equal to
+            li <strong>!=</strong> is not equal to
+            li <strong>&gt;</strong> greater than
+            li <strong>&gt;=</strong> greater than or equals to
+            li <strong>&lt;</strong> less than
+            li <strong>&lt;=</strong> less than or equals to
+            
+          p The example below clears the stage when the mouse is depressed.
+
+          pre.explanation
+            code(class='java')
+              | if(something == something){
+              |   do something
+              | }
+          pre.sample
+            code(class='java')
+              | if(mousePressed == true){
+              |   background(0, 0, 0);
+              | }
+        .col
+
+
+    .sample(id='random')
+      h3 Random
+      .row
+        .col
+          p Generate a random number between two values.
+
+          pre.explanation
+            code(class='java')
+              | random(low, high)
+          pre.sample
+            code(class='java')
+              | random(0, 100);
+        .col
+
+
+    .sample(id='variables')
+      h3 Variables
+      .row
+        .col
+          p Store a variable for later use in a program.
+
+          pre.sample
+            code(class='java')
+              | float diameter = random(10, 50);
+        .col
+
+
+    .sample(id='math')
+      h3 Math
+      .row
+        .col
+          p Do simple math operations. The example below places the center of the rectangle on the cursor.
+
+          pre.sample
+            code(class='java')
+              | rect(mouseX - 100, mouseY - 100, 200, 200);
+        .col
+
+
+    .sample(id='images')
+      h3 Images
+      .row
+        .col
+          p Load and draw images. Inclusion of the image class is required by using "PImage" followed by the storage container for the image.
+
+          pre.sample
+            code(class='java')
+              | PImage img;
+              | 
+              | void setup(){
+              |   img = loadImage("santa-steve.jpg");
+              | }
+              | 
+              | void draw(){
+              |   image(img, mouseX, mouseY, 100, 100);
+              | }
+        .col.image(style='background-image:url(/images/images.png)')
+
+
+    .sample(id='loops')
+      h3 Loops
+      .row
+        .col
+          p Create repetitive loops. The example below draws 10 rectangles in a horizontal line.
+
+          pre.sample
+            code(class='java')
+              | for(int i=0; i<10; i++){
+              |   rect(i*50, 50, 50, 50);
+              | }
+        .col
+
+
+    .sample(id='misc')
+      h3 Miscellaneous
+      .row
+        .col
+          p Other miscellaneous useful functions.
+
+          pre.sample
+            code(class='java')
+              | size(500, 500, P2D);
+              | // Define P2D as the drawing mode to take advantage of blend modes.
+              | 
+              | blendMode(SCREEN);
+              | // define the drawing blend mode. Options include ADD, SUBTRACT, DARKEST, LIGHTEST, DIFFERENCE, EXCLUSION, MULTIPLY, SCREEN, and REPLACE.
+              | 
+              | smooth();
+              | // Use anti aliasing for smoother drawing.
+              | 
+              | stroke(255, 0, 255);
+              | // Define the stroke of a shape before drawing.
+              | 
+              | noStroke();
+              | // Turn off strokes before drawing.
+        .col

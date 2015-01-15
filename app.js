@@ -9,7 +9,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', function(req, res){
-  res.render('index', { examples : examples.getReferences() });
+  res.render('index');
+});
+
+
+app.get('/examples', function(req, res){
+  res.render('examples', { examples : examples.getReferences() });
 });
 
 
