@@ -193,7 +193,7 @@ block content
       h3 Comments
       .row
         .col
-          p Select an RGB color for drawing, units are between 0 and 255.
+          p Prevent portions of code from executing, or create notes, by using comments.
 
           pre.sample
             code(class='java')
@@ -205,7 +205,7 @@ block content
       h3 Flow
       .row
         .col
-          p Select an RGB color for drawing, units are between 0 and 255.
+          p The basic control flow for a program.
 
           pre.sample
             code(class='java')
@@ -234,7 +234,7 @@ block content
               | void draw(){
               |   rect(mouseX, mouseY, 50, 50);
               | }
-        .col
+        .col.image(style='background-image:url(/images/input.png)')
 
 
     .sample(id='conditionals')
@@ -276,8 +276,14 @@ block content
               | random(low, high)
           pre.sample
             code(class='java')
-              | random(0, 100);
-        .col
+              | random(0, 255);
+              
+          p This example creates a line following randomly colored square.
+          pre.sample
+            code(class='java')
+              | fill(random(0, 255), random(0, 255), random(0, 255));
+              | rect(mouseX, mouseY, 50, 50);
+        .col.image(style='background-image:url(/images/random.png)')
 
 
     .sample(id='variables')
@@ -288,8 +294,11 @@ block content
 
           pre.sample
             code(class='java')
-              | float diameter = random(10, 50);
-        .col
+              | float diameter = random(10, 40);
+              | ellipse(mouseX, mouseY, diameter, diameter);
+
+          p This example creates randomly sized ellipses with equal width and height, also known as a circle.
+        .col.image(style='background-image:url(/images/variables.png)')
 
 
     .sample(id='math')
@@ -328,14 +337,27 @@ block content
       h3 Loops
       .row
         .col
-          p Create repetitive loops. The example below draws 10 rectangles in a horizontal line.
-
+          p Create repetitive loops. The example below draws 10 randomly colored rectangles in a horizontal line.
           pre.sample
             code(class='java')
               | for(int i=0; i<10; i++){
-              |   rect(i*50, 50, 50, 50);
+              |   fill(random(0, 255), random(0, 255), random(0, 255));
+              |   rect(i*50, 0, 50, 50);
               | }
-        .col
+          
+          p Nesting loops is also possible.
+          pre.sample
+            code(class='java')
+              | for(int i=0; i<10; i++){
+              |   for(int j=0; j<10; j++){
+              |     fill(random(0, 255), random(0, 255), random(0, 255));
+              |     rect(i*50, j*50, 50, 50);
+              |   }
+              | }
+        .col.image(style='background-image:url(/images/loops-1.png)')
+      .row
+        .col(style="height:100px;")
+        .col.image(style='background-image:url(/images/loops-2.png)')
 
 
     .sample(id='misc')
