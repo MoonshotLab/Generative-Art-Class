@@ -24,7 +24,6 @@ app.get('/example/:directory', function(req, res){
     example.codez = code;
     res.render('example', example);
   });
-
 });
 
 
