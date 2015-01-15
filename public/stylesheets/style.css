@@ -17,6 +17,9 @@ pre{
   max-width: 900px;
   margin: auto;
 }
+footer{
+  border-top: 1px solid rgba(0,0,0,.2);
+}
 
 
 /* Top Navigation */
@@ -38,9 +41,15 @@ nav.primary li:last-child{
 
 
 /* In-page Navigation used for the home page jump namv */
+nav.in-page{
+  border-top:     1px solid rgba(0,0,0,.2);
+  border-bottom:  1px solid rgba(0,0,0,.2);
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
 nav.in-page ul{
   padding-left: 0;
-  margin-bottom: 50px;
+
 }
 nav.in-page li{
   display: inline-block;

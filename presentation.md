@@ -340,9 +340,4 @@ noStroke();
 ```
 
 ^ Clarify the use of P2D and blend mode
-
----
-
-# Ok, Done
-
----
+^ Demonstrate how to add the generative art library
