@@ -1,7 +1,5 @@
 # Generative Art 101
 
-^ This is a presenter note
-
 ---
 
 # Show Example Here
@@ -48,6 +46,8 @@
 
 ![](http://fc09.deviantart.net/fs71/f/2011/094/d/a/drawing_grid_by_blossomhillstables-d3d70y5.png)
 
+^ show how to create folder and save a file on your desktop
+
 ---
 
 # Draw a Rectangle
@@ -56,19 +56,20 @@
   rect( x, y, width, height );
 ```
 
-^ Emphasize the parentheses and the semicolon
-^ We'll call those "parens"
-^ We call the whole thing, a function
-^ Draw a few more
+^ emphasize the parentheses and the semicolon
+^ we'll use the term "parens", and "semis"
+^ the whole thing together is called a function
 
 ---
-
 
 # Draw a Rectangle
 
 ```java
   rect(10, 10, 10, 10);
 ```
+
+^ draw some rectangles on screen and change the numbers
+
 ---
 
 # Draw an Ellipse
@@ -77,7 +78,7 @@
   ellipse(?, ?, ?, ?);
 ```
 
-^ Have them draw a few shapes
+^ draw some ellipses
 
 ---
 
@@ -102,8 +103,6 @@
   fill(255, 0, 0);
 ```
 
-^ What are the min and max numbers
-
 ---
 
 # Choose a Color
@@ -118,7 +117,8 @@
   ellipse(20, 20, 20, 20);
 ```
 
-^ Make a note of the order of operations
+^ notice the importance behind the order of operations
+^ you have to pick up your crayola before you can draw
 
 ---
 
@@ -160,6 +160,7 @@
 ```
 
 ^ Introduce the background method
+^ what if you put one of your variables into the background to control the color
 
 ---
 
@@ -170,6 +171,7 @@
     // rect(mouseX, mouseY, 50, 50);
   }
 ```
+
 ---
 
 
@@ -183,6 +185,7 @@
     // re-runs all the time
   }
 ```
+
 ---
 
 # The Setup Function
@@ -192,6 +195,7 @@
     background(0, 0, 0);
   }
 ```
+
 ---
 
 ## if something is something (or not something), then do something, otherwise do something else
@@ -217,9 +221,11 @@
   if(mousePressed == true){
     rect(mouseX, mouseY, 50, 50);
   } else{
-    background(0, 0, 0);
+    // do something else
   }
 ```
+
+^ Challenge: how would you clear the screen if the mouse is pressed?
 
 ---
 
@@ -237,6 +243,7 @@
 
 ^ we have another function
 ^ Challenge: can you make a drawing program which uses random sizes
+^ Challenge: what about random colors?
 
 ---
 
@@ -256,24 +263,7 @@
 ```
 
 ^ just ignore float, just the way it is
-
----
-
-# Some other useful functions
-
-```java
-  size(500, 500, P2D);
-
-  blendMode(SCREEN);
-
-  smooth();
-
-  stroke(255, 0, 255);
-
-  noStroke();
-```
-
-^ Clarify the use of P2D and blend mode
+^ it's a storage container, just like mouseX
 
 ---
 
@@ -284,7 +274,7 @@
   rect(mouseX + 10, mouseY + 10, 10, 10);
 ```
 
-^ Guess how to place the center of the squares at your mouse position
+^ Challenge: can you make a drawing program which places shapes on screen at their center point rather than top left corner?
 
 ---
 
@@ -302,7 +292,8 @@
   }
 ```
 
-^ loading in a library
+^ show how to download and save an image
+^ don't need to really understand classes, but just know you need to do this to load an image
 
 ---
 
@@ -329,7 +320,25 @@
 ```
 
 ^ How would you draw a vertical grid of boxes
-^ Challenge - can you draw a bulls eye?
+^ Challenge: Can you draw a bulls eye?
+
+---
+
+# Some other useful functions
+
+```java
+size(500, 500, P2D);
+
+blendMode(SCREEN);
+
+smooth();
+
+stroke(255, 0, 255);
+
+noStroke();
+```
+
+^ Clarify the use of P2D and blend mode
 
 ---
 
