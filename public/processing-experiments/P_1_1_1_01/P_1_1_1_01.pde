@@ -21,17 +21,7 @@
  *
  * MOUSE
  * position x/y        : resolution
- *
- * KEYS
- * s                   : save png
- * p                   : save pdf
  */
-
-import processing.pdf.*;
-import java.util.Calendar;
-
-boolean savePDF = false;
-
 int stepX;
 int stepY;
 
@@ -41,8 +31,6 @@ void setup(){
 }
 
 void draw(){
-  if (savePDF) beginRecord(PDF, timestamp()+".pdf");
-
   noStroke();
   colorMode(HSB, width, height, 100);
 
@@ -54,20 +42,4 @@ void draw(){
       rect(gridX, gridY, stepX, stepY);
     }
   }
-
-  if (savePDF) {
-    savePDF = false;
-    endRecord();
-  }
-}
-
-void keyPressed() {
-  if (key=='s' || key=='S') saveFrame(timestamp()+"_##.png");
-  if (key=='p' || key=='P') savePDF = true;
-}
-
-// timestamp
-String timestamp() {
-  Calendar now = Calendar.getInstance();
-  return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }

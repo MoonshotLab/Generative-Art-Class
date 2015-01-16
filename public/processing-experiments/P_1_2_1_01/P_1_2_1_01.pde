@@ -26,16 +26,8 @@
  *
  * KEYS
  * 1-2                 : switch interpolation style
- * s                   : save png
- * p                   : save pdf
- * c                   : save color palette
  */
-
 import generativedesign.*;
-import processing.pdf.*;
-import java.util.Calendar;
-
-boolean savePDF = false;
 
 int tileCountX = 2;
 int tileCountY = 10;
@@ -56,12 +48,6 @@ void setup() {
 
 
 void draw() {
-  if (savePDF) {
-    beginRecord(PDF, timestamp()+".pdf");
-    noStroke();
-    colorMode(HSB,360,100,100,100);
-  }
-
   tileCountX = (int) map(mouseX,0,width,2,100);
   tileCountY = (int) map(mouseY,0,height,2,10);
   float tileWidth = width / (float)tileCountX;
@@ -100,11 +86,6 @@ void draw() {
       i++;
     }
   }
-
-  if (savePDF) {
-    savePDF = false;
-    endRecord();
-  }
 }
 
 
@@ -122,16 +103,6 @@ void mouseReleased() {
 
 
 void keyReleased() {
-  if (key == 'c' || key == 'C') GenerativeDesign.saveASE(this, colors, timestamp()+".ase");
-  if (key == 's' || key == 'S') saveFrame(timestamp()+"_##.png");
-  if (key == 'p' || key == 'P') savePDF = true;
-
   if (key == '1') interpolateShortest = true;
   if (key == '2') interpolateShortest = false;
-}
-
-// timestamp
-String timestamp() {
-  Calendar now = Calendar.getInstance();
-  return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
 }

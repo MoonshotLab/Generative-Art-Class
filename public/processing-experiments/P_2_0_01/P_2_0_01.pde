@@ -1,5 +1,5 @@
 // P_2_0_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,28 +18,17 @@
 
 /**
  * drawing a filled circle with lines.
- * 	 
+ *
  * MOUSE
  * position x          : length
  * position y          : thickness and number of lines
- * 
- * KEYS
- * s                   : save png
- * p                   : save pdf
  */
-
-import processing.pdf.*;
-import java.util.Calendar;
-
-boolean savePDF = false;
 
 void setup(){
   size(550, 550);
 }
 
 void draw(){
-  if (savePDF) beginRecord(PDF, timestamp()+".pdf");
-
   strokeCap(SQUARE);
   smooth();
   noFill();
@@ -60,23 +49,4 @@ void draw(){
     // vertex(x, y);
   }
   endShape();
-
-  if (savePDF) {
-    savePDF = false;
-    endRecord();
-  }
 }
-
-void keyPressed() {
-  if (key=='s' || key=='S') saveFrame(timestamp()+"_##.png");
-  if (key=='p' || key=='P') savePDF = true;
-}
-
-// timestamp
-String timestamp() {
-  Calendar now = Calendar.getInstance();
-  return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
-}
-
-
-

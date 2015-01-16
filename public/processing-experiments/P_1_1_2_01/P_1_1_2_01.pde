@@ -1,5 +1,5 @@
 // P_1_1_2_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -18,22 +18,14 @@
 
 /**
  * changing the color circle by moving the mouse.
- * 	 
+ *
  * MOUSE
  * position x          : saturation
  * position y          : brighness
- * 
+ *
  * KEYS
  * 1-5                 : number of segments
- * s                   : save png
- * p                   : save pdf
  */
-
-import processing.pdf.*;
-import java.util.Calendar;
-
-boolean savePDF = false;
-
 int segmentCount = 360;
 int radius = 300;
 
@@ -43,8 +35,6 @@ void setup(){
 }
 
 void draw(){
-  if (savePDF) beginRecord(PDF, timestamp()+".pdf");
-
   noStroke();
   colorMode(HSB, 360, width, height);
   background(360);
@@ -60,17 +50,9 @@ void draw(){
     fill(angle, mouseX, mouseY);
   }
   endShape();
-
-  if (savePDF) {
-    savePDF = false;
-    endRecord();
-  }
 }
 
 void keyReleased(){
-  if (key=='s' || key=='S') saveFrame(timestamp()+"_##.png");
-  if (key=='p' || key=='P') savePDF = true;
-
   switch(key){
   case '1':
     segmentCount = 360;
@@ -89,17 +71,3 @@ void keyReleased(){
     break;
   }
 }
-
-// timestamp
-String timestamp() {
-  Calendar now = Calendar.getInstance();
-  return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
-}
-
-
-
-
-
-
-
-
