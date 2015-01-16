@@ -2,15 +2,15 @@
 
 ---
 
-# Show Example Here
+![](presentation-imagery/example-1.png)
 
 ---
 
-# Show Example Here
+![](presentation-imagery/example-2.mov)
 
 ---
 
-# Show Example Here
+![](presentation-imagery/example-3.mov)
 
 ---
 
@@ -44,7 +44,7 @@
 
 ---
 
-![fit](http://fc05.deviantart.net/fs71/f/2011/331/6/5/grid_texture_by_xjoeyxhd-d4hj068.png)
+![fit](presentation-imagery/grid.png)
 
 ^ show how to create folder and save a file on your desktop
 
