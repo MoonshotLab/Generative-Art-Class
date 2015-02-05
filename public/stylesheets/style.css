@@ -24,9 +24,11 @@ footer{
 
 /* Top Navigation */
 nav.primary{
-  background-color: rgba(0,0,0,.1);
+  background-color: #E0E0E0;
+  border-bottom: 2px solid #ABABAB;
+  border-left: 2px solid #ABABAB;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
 }
