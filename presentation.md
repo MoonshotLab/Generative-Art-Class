@@ -481,7 +481,19 @@
 # Loops
 
 ```java
-  // do something awesome here
+  void setup(){
+    frameRate(10);
+    size(500, 500);
+  }
+
+  void draw(){
+    for(int i=0; i<10; i++){
+      for(int j=0; j<10; j++){
+        fill(random(0, 255), random(0, 255), random(0, 255));
+        rect(i*50, j*50, 50, 50);
+      }
+    }
+  }
 ```
 
 ---
