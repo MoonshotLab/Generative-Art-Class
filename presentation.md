@@ -4,13 +4,23 @@
 
 ![](presentation-imagery/example-1.png)
 
+^ - Create static imagery
+- Lissajous Points, with all points connected, it's an orbital system
+
 ---
 
 ![](presentation-imagery/example-2.mov)
 
+^ - Create movies
+- Generate noise and translate it into direction
+
 ---
 
 ![](presentation-imagery/example-3.mov)
+
+^ - Create interactive pieces
+- Mouse position determines length and randomness of line
+- How is it possible to take semi colons, equal signs and a bunch of curly brackets to make what you just saw?
 
 ---
 
@@ -46,8 +56,6 @@
 
 ![fit](presentation-imagery/grid.png)
 
-^ show how to create folder and save a file on your desktop
-
 ---
 
 # Draw a Rectangle
@@ -56,9 +64,9 @@
   rect( x, y, width, height );
 ```
 
-^ emphasize the parentheses and the semicolon
-^ we'll use the term "parens", and "semis"
-^ the whole thing together is called a function
+^ - emphasize the parentheses and the semicolon
+- we'll use the term "parens", and "semis"
+- the whole thing together is called a function
 
 ---
 
@@ -68,7 +76,23 @@
   rect(10, 10, 10, 10);
 ```
 
-^ draw some rectangles on screen and change the numbers
+^ - draw some rectangles on screen and change the numbers
+- go over this pattern in detail again
+- Use the stop button to rebuild your program
+- Use command + R as a quick refresh
+- This is called a sketch, or program
+
+---
+
+# A Bigger Canvas
+
+```java
+  size(500, 500);
+```
+
+---
+
+# Documentation
 
 ---
 
@@ -78,7 +102,7 @@
   ellipse(?, ?, ?, ?);
 ```
 
-^ draw some ellipses
+^ - draw some ellipses
 
 ---
 
@@ -117,50 +141,98 @@
   ellipse(20, 20, 20, 20);
 ```
 
-^ notice the importance behind the order of operations
-^ you have to pick up your crayola before you can draw
+^ - notice the importance behind the order of operations
+- you have to pick up your marker before you can draw
+
+---
+
+# Structure
+
+```java
+  void setup(){
+
+  }
+
+  void draw(){
+
+  }
+```
+
+^ - Make a new Sketch
+- Ignore the void, ignore the parens, just put everything in the curlys
 
 ---
 
 # Draw!
 
 ```java
+  void setup(){
+    size(500, 500);
+  }
+
   void draw(){
     rect(20, 20, 50, 50);
   }
 ```
 
-^ Ignore the void, ignore the parens, just put everything in the curlys
-^ But there's no animation, WHAT IS ANIMATION?!?!
+^ - Indentation is important!
+- But there's no animation, WHAT IS ANIMATION?!?!
 
 ---
 
 # Detecting Input
 
 ```java
+  void setup(){
+    size(500, 500);
+  }
+
   void draw(){
     rect(mouseX, 20, 50, 50);
   }
 ```
 
-^ Emphasize how this is a variable
-^ the thing itself isn't moving, it's just getting drawn a bunch of times
-^ Guess how to get mouse y
-^ What happens if you flip x and y
-^ What happens if you use mouseX for the width
+^ - Emphasize how this is a variable
+- the thing itself isn't moving, it's just getting drawn a bunch of times
+- Guess how to get mouse y
+- What happens if you flip x and y
+- What happens if you use mouseX for the width
+
+---
+
+# Detecting Input
+
+```java
+  void setup(){
+    size(500, 500);
+  }
+
+  void draw(){
+    fill(mouseX, 0, 0);
+    rect(mouseX, 20, 50, 50);
+  }
+```
+
+^ What happens if you make one of the color options mouseX?
+- What about background
 
 ---
 
 # Clearing the Screen
 ```java
+  void setup(){
+    size(500, 500);
+  }
+
   void draw(){
     background(0, 0, 0);
+    fill(255, 0, 0);
     rect(mouseX, mouseY, 50, 50);
   }
 ```
 
-^ Introduce the background method
-^ what if you put one of your variables into the background to control the color
+^ - Introduce the background method
+- what if you put one of your variables into the background to control the color
 
 ---
 
@@ -174,64 +246,30 @@
 
 ---
 
-
-# The Setup Function
-```java
-  void setup(){
-    // runs one time
-  }
-
-  void draw(){
-    // re-runs all the time
-  }
-```
-
----
-
-# The Setup Function
-```java
-  void setup(){
-    size(500, 500);
-    background(0, 0, 0);
-  }
-```
-
----
-
-## if something is something (or not something), then do something, otherwise do something else
-
----
-
 # if something...
 
 ```java
-  if(mousePressed == true){
-    rect(mouseX, mouseY, 50, 50);
+  void setup(){
+    size(500, 500);
+  }
+
+  void draw(){
+    if(mousePressed == true){
+      stroke(100, 100, 100);
+      line(mouseX, mouseY, 250, 250);
+      noStroke();
+      ellipse(mouseX, mouseY, 10, 10);
+    }
   }
 ```
 
-^ we test equality with ==
-^ mousePressed is yes, or true
-
----
-
-# otherwise...
-
-```java
-  if(mousePressed == true){
-    rect(mouseX, mouseY, 50, 50);
-  } else{
-    // do something else
-  }
-```
-
-^ Challenge: how would you clear the screen if the mouse is pressed?
+^ - create a new sketch
+- we test equality with ==
+- mousePressed is yes, or true
 
 ---
 
 # >, >=, <, <=, !=, ==
-
-^ Challenge: can you draw a circle if the mouse is pressed, otherwise draw squares
 
 ---
 
@@ -241,29 +279,124 @@
   random(low, high);
 ```
 
-^ we have another function
-^ Challenge: can you make a drawing program which uses random sizes
-^ Challenge: what about random colors?
-
 ---
 
 # Random Numbers
 
 ```java
-  rect(mouseX, mouseY, random(10, 50), random(10, 50));
+  void setup(){
+    size(500, 500);
+  }
+
+  void draw(){
+    ellipse(random(0, 500), random(0, 500), 10, 10);
+  }
 ```
+
+^ - Make a new sketch
+- we have another function
+- Challenge: can you make it use random colors?
+- show what it looks like if you use line with mouse positioned
+- show what random sized ellipses look like
 
 ---
 
 # Using Variables
 
 ```java
-  float diameter = random(10, 50);
-  ellipse(mouseX, mouseY, diameter, diameter);
+  void setup(){
+    size(500, 500);
+  }
+
+  void draw(){
+    float diameter = random(10, 50);
+    ellipse(mouseX, mouseY, diameter, diameter);
+  }
 ```
 
-^ just ignore float, just the way it is
-^ it's a storage container, just like mouseX
+^ - just ignore float, just the way it is
+- it's a storage container, just like mouseX
+
+---
+
+# Using Variables
+
+```java
+  void setup(){
+    size(500, 500);
+    background(0, 0, 0);
+    noStroke();
+  }
+
+  void draw(){
+    float xPos = random(0, 500);
+    float yPos = random(0, 500);
+
+    fill(xPos, yPos, 0);
+    rect(xPos, yPos, 10, 10);
+  }
+```
+
+^ - what if you change the last number in fill to 255
+
+---
+
+# Using Variables
+
+```java
+  void setup(){
+    size(500, 500, P2D);
+    background(0, 0, 0);
+    noStroke();
+    blendMode(SCREEN);
+  }
+
+  void draw(){
+    float xPos = random(0, 500);
+    float yPos = random(0, 500);
+
+    fill(xPos, yPos, 0);
+    rect(xPos, yPos, 30, 30);
+  }
+```
+
+^ Add blend mode, use P2D drawing
+- make your shapes bigger
+
+---
+
+# Using Variables
+
+```java
+  float lastXPos = 0;
+  float lastYPos = 0;
+
+  void setup(){
+    frameRate(10);
+    size(500, 500, P2D);
+    background(0, 0, 0);
+    blendMode(SCREEN);
+  }
+
+  void draw(){
+    float xPos = random(0, 500);
+    float yPos = random(0, 500);
+
+    noStroke();
+    fill(xPos, yPos, 0);
+    rect(xPos, yPos, 20, 20);
+
+    stroke(xPos, yPos, 0);
+    line(lastXPos, lastYPos, xPos, yPos);
+
+    lastXPos = xPos;
+    lastYPos = yPos;
+  }
+```
+
+^ - Set up lastXPos and lastYPos
+- Adjust frame rate
+- Capture xPos and yPos on draw
 
 ---
 
@@ -271,12 +404,36 @@
 ## + - / *
 
 ```java
-  rect(mouseX + 10, mouseY + 10, 10, 10);
+  float lastXPos = 0;
+  float lastYPos = 0;
+
+  void setup(){
+    frameRate(10);
+    size(500, 500, P2D);
+    background(0, 0, 0);
+    blendMode(SCREEN);
+  }
+
+  void draw(){
+    float xPos = random(0, 500);
+    float yPos = random(0, 500);
+
+    noStroke();
+    fill(xPos, yPos, 0);
+    rect(xPos, yPos, 20, 20);
+
+    stroke(xPos, yPos, 0, 100);
+    line(lastXPos + 10, lastYPos + 10, xPos + 10, yPos + 10);
+
+    lastXPos = xPos;
+    lastYPos = yPos;
+  }
 ```
 
-^ Challenge: can you make a drawing program which places shapes on screen at their center point rather than top left corner?
+^ Add some math for the line positioning
 
 ---
+
 
 # Images
 
@@ -284,16 +441,18 @@
   PImage img;
 
   void setup(){
-    img = loadImage("santa-steve.jpg");
+    size(500, 500);
+    img = loadImage("steve.jpg");
   }
 
   void draw(){
-    image(img, mouseX, mouseY, 300, 200);
+    image(img, mouseX, mouseY, 200, 200);
   }
 ```
 
-^ show how to download and save an image
-^ don't need to really understand classes, but just know you need to do this to load an image
+^ - show how to create folder and save a file on your desktop
+- show how to download and save an image
+- don't need to really understand classes, but just know you need to do this to load an image
 
 ---
 
@@ -305,39 +464,18 @@
   }
 ```
 
-^ define what is less than
-^ define what is ++
-^ just ignore the int for now
+^ - define what is less than
+- define what is ++
+- just ignore the int for now
 
 ---
 
 # Loops
 
 ```java
-  for(int i=0; i<10; i++){
-    rect(i*50, 50, 50, 50);
-  }
+  // do something awesome here
 ```
-
-^ How would you draw a vertical grid of boxes
-^ Challenge: Can you make a checkerboard?
-^ Challenge: Can you draw a bulls eye?
 
 ---
 
-# Some other useful functions
-
-```java
-size(500, 500, P2D);
-
-blendMode(SCREEN);
-
-smooth();
-
-stroke(255, 0, 255);
-
-noStroke();
-```
-
-^ Clarify the use of P2D and blend mode
-^ Demonstrate how to add the generative art library
+# OK DONE
