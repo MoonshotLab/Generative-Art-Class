@@ -2,6 +2,14 @@
 
 ---
 
+![inline](http://ballmeripsum.com/img/ballmer.jpg)
+
+---
+
+![inline](http://www.kaicheng.ca/images/ballmer_peak.png)
+
+---
+
 ![](presentation-imagery/example-1.png)
 
 ^ - Create static imagery
