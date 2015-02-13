@@ -4,6 +4,9 @@ block content
   .wrapper
     h1 Examples
   .grid
+    each example in examples.C
+      a(href="/example/#{example.directory}")
+        .item.three(style="background-image:url(/processing-experiments/#{example.directory}/#{example.image})")
     each example in examples.P
       a(href="/example/#{example.directory}")
         .item.three(style="background-image:url(/processing-experiments/#{example.directory}/#{example.image})")
