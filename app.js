@@ -20,9 +20,11 @@ app.get('/examples', function(req, res){
 
 app.get('/example/:directory', function(req, res){
   var example = examples.getReference(req.params.directory);
-  examples.getCode(req.params.directory, function(code){
-    example.codez = code;
-    res.render('example', example);
+  examples.getCode(req.params.directory, function(err, code){
+    if(!err){
+      example.codez = code;
+      res.render('example', example);
+    } else res.send(err);
   });
 });
 
