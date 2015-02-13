@@ -373,8 +373,6 @@
 
 ---
 
-# Using Variables
-
 ```java
   float lastXPos = 0;
   float lastYPos = 0;
@@ -407,9 +405,6 @@
 - Capture xPos and yPos on draw
 
 ---
-
-# Maths
-## + - / *
 
 ```java
   float lastXPos = 0;
