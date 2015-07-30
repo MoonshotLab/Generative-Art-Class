@@ -1,5 +1,5 @@
 // P_2_3_4_01.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -17,11 +17,11 @@
 // limitations under the License.
 
 /**
- * draw tool. shows how to draw with dynamic elements. 
- * 
+ * draw tool. shows how to draw with dynamic elements.
+ *
  * MOUSE
  * drag                : draw
- * 
+ *
  * KEYS
  * 1-9                 : switch module
  * del, backspace      : clear screen
@@ -29,15 +29,7 @@
  * arrow down          : module size -
  * arrow left          : step size -
  * arrow right         : step size +
- * s                   : save png
- * r                   : start pdf recording
- * e                   : stop pdf recording
  */
-
-import processing.pdf.*;
-import java.util.Calendar;
-
-boolean recordPDF = false;
 
 float x = 0, y = 0;
 float stepSize = 5.0;
@@ -46,7 +38,7 @@ float moduleSize = 25;
 PShape lineModule;
 
 void setup() {
-  // use full screen size 
+  // use full screen size
   size(displayWidth, displayHeight);
   background(255);
   smooth();
@@ -54,12 +46,6 @@ void setup() {
   y = mouseY;
   cursor(CROSS);
   lineModule = loadShape("01.svg");
-
-  /*
-  // load an image in background
-   PImage img = loadImage(selectInput("select a background image"));
-   image(img, 0, 0, width, height);
-   */
 }
 
 void draw() {
@@ -67,7 +53,7 @@ void draw() {
     float d = dist(x,y, mouseX,mouseY);
 
     if (d > stepSize) {
-      float angle = atan2(mouseY-y, mouseX-x); 
+      float angle = atan2(mouseY-y, mouseX-x);
 
       pushMatrix();
       translate(mouseX, mouseY);
@@ -87,7 +73,6 @@ void mousePressed() {
 }
 
 void keyReleased() {
-  if (key == 's' || key == 'S') saveFrame(timestamp()+"_##.png");
   if (key == DELETE || key == BACKSPACE) background(255);
 
   // load svg for line module
@@ -100,53 +85,17 @@ void keyReleased() {
   if (key=='7') lineModule = loadShape("07.svg");
   if (key=='8') lineModule = loadShape("08.svg");
   if (key=='9') lineModule = loadShape("09.svg");
-
-  // ------ pdf export ------
-  // press 'r' to start pdf recordPDF and 'e' to stop it
-  // ONLY by pressing 'e' the pdf is saved to disk!
-  if (key =='r' || key =='R') {
-    if (recordPDF == false) {
-      beginRecord(PDF, timestamp()+"_.pdf");
-      println("recording started");
-      recordPDF = true;
-    }
-  } 
-  else if (key == 'e' || key =='E') {
-    if (recordPDF) {
-      println("recording stopped");
-      endRecord();
-      recordPDF = false;
-      background(255); 
-    }
-  } 
 }
 
 void keyPressed() {
   if(key == CODED) {
-    // moduleSize ctrls arrowkeys up/down 
+    // moduleSize ctrls arrowkeys up/down
     if (keyCode == UP) moduleSize += 5;
-    if (keyCode == DOWN) moduleSize -= 5; 
+    if (keyCode == DOWN) moduleSize -= 5;
     // stepSize ctrls arrowkeys left/right
-    stepSize = max(stepSize,0.5);   
+    stepSize = max(stepSize,0.5);
     if (keyCode == LEFT) stepSize -= 0.5;
-    if (keyCode == RIGHT) stepSize += 0.5; 
+    if (keyCode == RIGHT) stepSize += 0.5;
     println("moduleSize: "+moduleSize+"  stepSize: "+stepSize);
   }
 }
-
-// timestamp
-String timestamp() {
-  Calendar now = Calendar.getInstance();
-  return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
-}
-
-
-
-
-
-
-
-
-
-
-

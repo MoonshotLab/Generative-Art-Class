@@ -1,5 +1,5 @@
 // P_3_2_1_02.pde
-// 
+//
 // Generative Gestaltung, ISBN: 978-3-87439-759-9
 // First Edition, Hermann Schmidt, Mainz, 2009
 // Hartmut Bohnacker, Benedikt Gross, Julia Laub, Claudius Lazzeroni
@@ -22,7 +22,7 @@
 
 /**
  * fontgenerator with static elements (svg files)
- * 
+ *
  * MOUSE
  * position x          : module rotation
  * position y          : module size
@@ -35,10 +35,6 @@
  */
 
 import geomerative.*;
-import processing.pdf.*;
-import java.util.Calendar;
-
-boolean doSave = false;
 
 RFont font;
 
@@ -50,9 +46,9 @@ PShape module1, module2;
 
 
 void setup() {
-  size(1024,500);  
+  size(1024,500);
   // make window resizable
-  frame.setResizable(true); 
+  frame.setResizable(true);
   smooth();
 
   module1 = loadShape("A_01.svg");
@@ -66,21 +62,12 @@ void setup() {
   // load a truetype font
   font = new RFont("FreeSans.ttf", 200, RFont.LEFT);
 
-  // ------ set style and segment resolution  ------
-  //RCommand.setSegmentStep(10);
-  //RCommand.setSegmentator(RCommand.UNIFORMSTEP);
-
   RCommand.setSegmentLength(6);
   RCommand.setSegmentator(RCommand.UNIFORMLENGTH);
-
-  //RCommand.setSegmentAngle(random(0,HALF_PI));
-  //RCommand.setSegmentator(RCommand.ADAPTATIVE);
 }
 
 
 void draw() {
-  if (doSave) beginRecord(PDF, timestamp()+".pdf");
-
   background(255);
   noStroke();
   shapeMode(CENTER);
@@ -129,18 +116,7 @@ void draw() {
         popMatrix();
       }
     }
-
-    if (doSave) {
-      doSave = false;
-      endRecord();
-      saveFrame(timestamp()+".png");
-    }
   }
-}
-
-
-void keyReleased() {
-  if (keyCode == CONTROL) doSave = true;
 }
 
 
@@ -152,7 +128,7 @@ void keyPressed() {
     case BACKSPACE:
       textTyped = textTyped.substring(0,max(0,textTyped.length()-1));
       break;
-    case TAB:    
+    case TAB:
     case ENTER:
     case RETURN:
     case ESC:
@@ -165,48 +141,24 @@ void keyPressed() {
   if (keyCode == ALT) {
     shapeSet = (shapeSet+1) % 4;
     switch(shapeSet) {
-    case 0: 
+    case 0:
       module1 = loadShape("A_01.svg");
       module2 = loadShape("A_02.svg");
-      break; 
-    case 1: 
+      break;
+    case 1:
       module1 = loadShape("B_01.svg");
       module2 = loadShape("B_02.svg");
-      break; 
-    case 2: 
+      break;
+    case 2:
       module1 = loadShape("C_01.svg");
       module2 = loadShape("C_02.svg");
-      break; 
-    case 3: 
+      break;
+    case 3:
       module1 = loadShape("D_01.svg");
       module2 = loadShape("D_02.svg");
-      break; 
+      break;
     }
     module1.disableStyle();
     module2.disableStyle();
   }
 }
-
-// timestamp
-String timestamp() {
-  Calendar now = Calendar.getInstance();
-  return String.format("%1$ty%1$tm%1$td_%1$tH%1$tM%1$tS", now);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
